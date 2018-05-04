@@ -48,6 +48,13 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($request->is('api/*'))
+        {
+            return response()->json([
+                'error' => 'Uncaught api exception error occurred. ' . $exception->getMessage()
+            ], 404);
+        }
+
         return parent::render($request, $exception);
     }
 }
