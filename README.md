@@ -17,7 +17,7 @@ List specific user details
 
 Update user details
 
-#### Parameters
+#### Optional Parameters
 - user_roles_id (int)
 - username (string)
 - address (string)
@@ -42,7 +42,7 @@ Get specific blog post
 
 Create a new blog post
 
-#### Parameters
+#### Required Parameters
 - author (int)
 - title (string)
 - content (string)

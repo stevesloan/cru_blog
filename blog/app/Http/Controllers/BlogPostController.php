@@ -21,7 +21,11 @@ class BlogPostController extends Controller
     }
 
     public function createBlogPost(Request $request) {
-        $blogPost = BlogPost::create($request->all());
-        return response()->json($blogPost, 201);
+        if ($request->has(['author', 'title', 'content'])) {
+            $blogPost = BlogPost::create($request->all());
+            return response()->json($blogPost, 201);
+        } else {
+            return response()->json("Missing Required Fields", 400);
+        }
     }
 }
