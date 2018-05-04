@@ -7,9 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class UserAddress extends Model
 {
     public $timestamps = false;
-    
+
     public function user()
     {
         return $this->belongsTo('App\User', 'user_id');
     }
+
+    protected $fillable = [
+        'address', 'province', 'city', 'country', 'postal_code',
+    ];
 }

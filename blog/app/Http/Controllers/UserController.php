@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\UserAddress;
 
 class UserController extends Controller
 {
@@ -31,9 +32,14 @@ class UserController extends Controller
         $user->user_roles_id = $request->user_roles_id;
         $user->username = $request->username;
         $user->email = $request->email;
+
         $user->address->address = $request->address;
-        //TODO rest of address
+        $user->address->province = $request->province;
+        $user->address->city = $request->city;
+        $user->address->country = $request->country;
+        $user->address->postal_code = $request->postal_code;
         $user->address->update();
+
         $user->update();
         return response()->json($user, 200);
     }
