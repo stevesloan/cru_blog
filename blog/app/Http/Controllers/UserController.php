@@ -30,23 +30,41 @@ class UserController extends Controller
 
     public function updateUser($id, Request $request)
     {
-
         $user = User::find($id);
-        $user->user_roles_id = $request->input('user_roles_id', $user->user_roles_id);
-        $user->username = $request->input('username', $user->username);
-        $user->email = $request->input('email', $user->email);
+        
+        if ($request->has('user_roles_id')) {
+            $user->user_roles_id = $request->input('user_roles_id');
+        }
+        if ($request->has('username')) {
+            $user->username = $request->input('username');
+        }
+        if ($request->has('email')) {
+            $user->email = $request->input('email');
+        }
 
-        $user->address->address = $request->input('address', $user->address);
-        $user->address->province = $request->input('province', $user->province);
-        $user->address->city = $request->input('city', $user->city);
-        $user->address->country = $request->input('country', $user->country);
-        $user->address->postal_code = $request->input('postal_code', $user->postal_code);
+        if ($request->has('address')) {
+            $user->address->address = $request->input('address');
+        }
+        if ($request->has('province')) {
+            $user->address->province = $request->input('province');
+        }
+        if ($request->has('city')) {
+            $user->address->city = $request->input('city');
+        }
+        if ($request->has('city')) {
+            $user->address->city = $request->input('city');
+        }
+        if ($request->has('country')) {
+            $user->address->country = $request->input('country');
+        }
+        if ($request->has('postal_code')) {
+            $user->address->postal_code = $request->input('postal_code');
+        }
+
         $user->address->update();
 
         $user->update();
         return response()->json($user, 200);
-
-
     }
 
 }
