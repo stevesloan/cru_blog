@@ -10,4 +10,8 @@ class BlogPost extends Model
     {
         return $this->belongsTo('App\User', 'author');
     }
+
+    protected $fillable = [
+        'author', 'title', 'content',
+    ];
 }

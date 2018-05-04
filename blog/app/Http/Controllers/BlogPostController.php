@@ -21,11 +21,7 @@ class BlogPostController extends Controller
     }
 
     public function createBlogPost(Request $request) {
-        $blogPost = new BlogPost;
-        $blogPost->author = $request->author;
-        $blogPost->title = $request->title;
-        $blogPost->content = $request->content;
-        $blogPost->save();
+        $blogPost = BlogPost::create($request->all());
         return response()->json($blogPost, 201);
     }
 }
