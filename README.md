@@ -7,31 +7,46 @@ API is available at example.com/api/
 
 ### GET /user
 
-get all users and their details
+Get all users and their details
 
 ### GET /user/{id}
 
-list specific user details
+List specific user details
 
 ### PUT /user/{id}
 
-update user details
+Update user details
+
+#### Parameters
+- user_roles_id (int)
+- username (string)
+- address (string)
+- province (string)
+- city (string)
+- country (string)
+- postal_code (string)
 
 ### GET /blog_posts
 
-get all blog posts
+Get all blog posts
 
 ### GET /blog_posts/user/{id}
 
-get all blog posts from specified user
+Get all blog posts from specified user
 
 ### GET /blog_posts/{id}
 
-get specific blog post
+Get specific blog post
 
 ### POST /create_blog_post
 
-create a new blog post
+Create a new blog post
+
+#### Parameters
+- author (int)
+- title (string)
+- content (string)
+
 
 
 ## Installation
