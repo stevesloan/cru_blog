@@ -8,19 +8,23 @@ Use App\User;
 
 class BlogPostController extends Controller
 {
-    public function getAllBlogPosts() {
+    public function getAllBlogPosts()
+    {
         return BlogPost::all();
     }
 
-    public function getUserBlogPosts($id) {
+    public function getUserBlogPosts($id)
+    {
         return User::find($id)->blogPosts;
     }
 
-    public function getBlogPost($id) {
+    public function getBlogPost($id)
+    {
         return BlogPost::find($id);
     }
 
-    public function createBlogPost(Request $request) {
+    public function createBlogPost(Request $request)
+    {
         if ($request->has(['author', 'title', 'content'])) {
             $blogPost = BlogPost::create($request->all());
             return response()->json($blogPost, 201);
