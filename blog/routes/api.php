@@ -38,6 +38,19 @@ Route::get('users/{id}', function($id) {
     return $user;
 });
 
+Route::put('edit_user/{id}', function($id, Request $request) {
+    $user = User::find($id);
+    $user->user_roles_id = $request->user_roles_id;
+    $user->username = $request->username;
+    $user->email = $request->email;
+    $user->address->address = $request->address;
+    //TODO rest of address
+    $user->address->update();
+    $user->update();
+    return response()->json($user, 200);
+});
+
+
 // blog_posts
 Route::get('blog_posts', function() {
     return BlogPost::all();
@@ -51,11 +64,11 @@ Route::get('blog_posts/{id}', function($id) {
     return BlogPost::find($id);
 });
 
-
-
-// /create_blog_post
-// params: (whatever is needed to create a new blog post)
-//
-// /edit_user
-// edit a user’s details, including their role and address
-// params: (whatever is needed to accomplish this)
+Route::post('create_blog_post', function(Request $request) {
+    $blogPost = new BlogPost;
+    $blogPost->author = $request->author;
+    $blogPost->title = $request->title;
+    $blogPost->content = $request->content;
+    $blogPost->save();
+    return response()->json($blogPost, 201);
+});
