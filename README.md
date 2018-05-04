@@ -5,15 +5,15 @@
 
 API is available at example.com/api/
 
-### GET /user
+### GET /users
 
 Get all users and their details
 
-### GET /user/{id}
+### GET /users/{id}
 
 List specific user details
 
-### PUT /user/{id}
+### PUT /edit_user/{id}
 
 Update user details
 
@@ -25,6 +25,9 @@ Update user details
 - city (string)
 - country (string)
 - postal_code (string)
+
+#### Required Parameter
+- ```_method=PUT```
 
 ### GET /blog_posts
 
